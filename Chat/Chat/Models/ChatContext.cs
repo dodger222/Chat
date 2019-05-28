@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chat.Models
 {
-    public class ChatContext : IdentityDbContext
+    public class ChatContext : IdentityDbContext<User>
     {
         public ChatContext(DbContextOptions<ChatContext> options)
             :base(options)
