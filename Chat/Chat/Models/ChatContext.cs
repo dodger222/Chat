@@ -14,5 +14,7 @@ namespace Chat.Models
         {
             Database.EnsureCreated();
         }
+
+        public DbSet<Message> Messages { get; set; }
     }
 }
