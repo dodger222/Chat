@@ -9,7 +9,7 @@ namespace Chat.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        public int Nickname { get; set; }
+        public string Nickname { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
