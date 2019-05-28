@@ -4,14 +4,52 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p>@User.Identity.Name</p>
+    <p id="userName">@User.Identity.Name</p>
 
-    <form method="post" asp-controller="Account" asp-action="LogOff">
-        <input type="submit" value="Выход" />
-    </form>
+    <div id="header"></div><br />
+
+    <div id="inputForm">
+        <input type="text" id="message" />
+        <input type="button" id="sendBtn" value="Отправить" />
+    </div>
 }
 else
 {
-    <a asp-controller="Account" asp-action="Login">Вход</a>
-    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+    <p>Пожалуйста, авторизируйтесь, или пройдите регистрацию.</p>
 }
+
+<div id="chatroom"></div>
+
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+<script>
+    "use strict"
+
+    var hubConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+    let userName = "";
+    // получение сообщения от сервера
+    hubConnection.on("Receive", function (message, userName) {
+
+        // создаем элемент <b> для имени пользователя
+        let userNameElem = document.createElement("b");
+        userNameElem.appendChild(document.createTextNode(userName + ": "));
+
+        // создает элемент <p> для сообщения пользователя
+        let elem = document.createElement("p");
+        elem.appendChild(userNameElem);
+        elem.appendChild(document.createTextNode(message));
+
+        var firstElem = document.getElementById("chatroom").firstChild;
+        document.getElementById("chatroom").insertBefore(elem, firstElem);
+
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", function (e) {
+        userName = document.getElementById("userName").textContent;
+        let message = document.getElementById("message").value;
+        hubConnection.invoke("Send", message, userName);
+    });
+
+    hubConnection.start();
+</script>
