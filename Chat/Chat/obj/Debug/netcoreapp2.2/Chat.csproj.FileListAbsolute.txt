@@ -30,3 +30,4 @@ F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.pdb
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csproj.CopyComplete
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
+F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
