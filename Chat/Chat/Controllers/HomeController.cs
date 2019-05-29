@@ -5,11 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Chat.Models;
+using Microsoft.AspNetCore.SignalR;
+using Chat.Hubs;
 
 namespace Chat.Controllers
 {
     public class HomeController : Controller
     {
+
         public IActionResult Index()
         {
             return View();

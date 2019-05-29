@@ -2,7 +2,6 @@ F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.deps.json
 F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.runtimeconfig.json
 F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.runtimeconfig.dev.json
 F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.dll
-F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csprojAssemblyReference.cache
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csproj.CoreCompileInputs.cache
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.RazorAssemblyInfo.cache
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.RazorAssemblyInfo.cs
@@ -31,3 +30,4 @@ F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csproj.CopyComplete
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csprojAssemblyReference.cache

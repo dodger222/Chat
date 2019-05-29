@@ -7,49 +7,18 @@
     <p id="userName">@User.Identity.Name</p>
 
     <div id="header"></div><br />
-
+    <div id="chatroom" style="overflow: auto; width:100%; height:300px;"></div>
+    <br />
     <div id="inputForm">
         <input type="text" id="message" />
-        <input type="button" id="sendBtn" value="Отправить" />
+        <input type="submit" id="sendBtn" value="Отправить" />
     </div>
 }
 else
 {
-    <p>Пожалуйста, авторизируйтесь, или пройдите регистрацию.</p>
+<p>Пожалуйста, авторизируйтесь, или пройдите регистрацию.</p>
+<div id="chatroom" style="overflow: auto; width:300px; height:200px;"></div>
 }
 
-<div id="chatroom"></div>
-
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
-
-<script>
-    "use strict"
-
-    var hubConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
-    let userName = "";
-    // получение сообщения от сервера
-    hubConnection.on("Receive", function (message, userName) {
-
-        // создаем элемент <b> для имени пользователя
-        let userNameElem = document.createElement("b");
-        userNameElem.appendChild(document.createTextNode(userName + ": "));
-
-        // создает элемент <p> для сообщения пользователя
-        let elem = document.createElement("p");
-        elem.appendChild(userNameElem);
-        elem.appendChild(document.createTextNode(message));
-
-        var firstElem = document.getElementById("chatroom").firstChild;
-        document.getElementById("chatroom").insertBefore(elem, firstElem);
-
-    });
-
-    document.getElementById("sendBtn").addEventListener("click", function (e) {
-        userName = document.getElementById("userName").textContent;
-        let message = document.getElementById("message").value;
-        hubConnection.invoke("Send", message, userName);
-    });
-
-    hubConnection.start();
-</script>
+<script src="~/js/chat.js"></script>

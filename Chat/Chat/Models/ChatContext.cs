@@ -9,6 +9,10 @@ namespace Chat.Models
 {
     public class ChatContext : IdentityDbContext<User>
     {
+        public ChatContext()
+        {
+        }
+
         public ChatContext(DbContextOptions<ChatContext> options)
             :base(options)
         {
