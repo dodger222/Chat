@@ -5,24 +5,27 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p id="userName">@User.Identity.Name</p>
-
+    <div class="form-inline">
+        <p>You are logged in as:&nbsp;</p>
+        <p id="userName">@User.Identity.Name</p>
+    </div>
+    
     <div id="header"></div><br />
-    <div id="chatroom" style="overflow: auto; width:100%; height:300px;">
-        <ul>
+    <div id="chatroom" style="overflow: auto; width:100%; height:300px;" class="form-control">
+        <ul style="margin-left:0; margin-bottom:0; padding-left:0; padding-bottom:0;">
             @foreach(var message in Model)
             {
                 @if (message.User != null)
                 {
-                    <li><b>@message.User.UserName: </b>@message.Text</li>
+                    <li style="list-style-type: none;"><b>@message.User.UserName: </b>@message.Text</li>
                 }
             }
         </ul>
     </div>
     <br />
     <div id="inputForm">
-        <input type="text" id="message" />
-        <input type="submit" id="sendBtn" value="Отправить" />
+        <input type="text" id="message" class="form-control"/>
+        <input type="submit" id="sendBtn" value="Отправить" class="btn btn-radius btn-success"/>
     </div>
 }
 else
