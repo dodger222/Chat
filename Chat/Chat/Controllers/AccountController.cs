@@ -29,7 +29,7 @@ namespace Chat.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Nickname = model.Nickname, UserName = model.Nickname };
+                User user = new User { Nickname = model.Nickname, UserName = model.Nickname , DateTimeRegistration = DateTime.Now};
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -7,15 +7,24 @@ using Microsoft.AspNetCore.Mvc;
 using Chat.Models;
 using Microsoft.AspNetCore.SignalR;
 using Chat.Hubs;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat.Controllers
 {
     public class HomeController : Controller
     {
+        ChatContext _db;
+
+        public HomeController(ChatContext db)
+        {
+            _db = db;
+        }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Message> messages = _db.Messages.Include(m => m.User).ToArray();
+            var model = messages;
+            return View(model);
         }
 
         public IActionResult Privacy()
