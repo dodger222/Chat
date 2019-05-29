@@ -12,6 +12,7 @@ namespace Chat.Models
 
         public string UserId { get; set; }
         public string Text { get; set; }
+        public DateTime DateTimeOfSend { get; set; }
         
         public User User { get; set; }
     }

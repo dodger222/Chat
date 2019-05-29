@@ -24,7 +24,8 @@ namespace Chat.Hubs
             Message mes = new Message
             {
                 Text = message,
-                UserId = _db.Users.Where(u => u.UserName == userName).FirstOrDefault().Id
+                UserId = _db.Users.Where(u => u.UserName == userName).FirstOrDefault().Id,
+                DateTimeOfSend = DateTime.Now
             };
 
             if (mes != null && message.Length != 0)
