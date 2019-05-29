@@ -8,23 +8,34 @@ using Chat.Models;
 using Microsoft.AspNetCore.SignalR;
 using Chat.Hubs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Chat.Controllers
 {
     public class HomeController : Controller
     {
         ChatContext _db;
+        private readonly UserManager<User> _userManager;
 
-        public HomeController(ChatContext db)
+        public HomeController(ChatContext db, UserManager<User> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Message> messages = _db.Messages.Include(m => m.User).ToArray();
-            var model = messages;
-            return View(model);
+            string userId =  _userManager.GetUserId(User);
+
+            if (userId != null)
+            {
+                DateTime userName = _db.Users.Where(u => u.Id == userId).FirstOrDefault().DateTimeRegistration;
+                IEnumerable<Message> messages = _db.Messages.Where(m => m.DateTimeOfSend.CompareTo(userName) > 0).Include(m => m.User).ToArray();
+                var model = messages;
+                return View(model);
+            }
+
+            return View();
         }
 
         public IActionResult Privacy()
