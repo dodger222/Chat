@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SignalR;
 using Chat.Hubs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Chat.Interfaces;
 
 namespace Chat.Controllers
 {
@@ -16,11 +17,13 @@ namespace Chat.Controllers
     {
         ChatContext _db;
         private readonly UserManager<User> _userManager;
+        private readonly IUserRepository _userRepository;
 
-        public HomeController(ChatContext db, UserManager<User> userManager)
+        public HomeController(ChatContext db, UserManager<User> userManager, IUserRepository userRepository)
         {
             _db = db;
             _userManager = userManager;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -29,7 +32,7 @@ namespace Chat.Controllers
 
             if (userId != null)
             {
-                DateTime userRegistrationDateTime = _db.Users.Where(u => u.Id == userId).FirstOrDefault().DateTimeRegistration;
+                DateTime userRegistrationDateTime = _userRepository.GetUserRegistrationDate(userId);
                 IEnumerable<Message> messages = _db.Messages.Where(m => m.DateTimeOfSend.CompareTo(userRegistrationDateTime) > 0).Include(m => m.User).ToArray();
                 var model = messages;
                 return View(model);

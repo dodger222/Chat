@@ -5,6 +5,7 @@ F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.dll
 F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.pdb
 F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.Views.dll
 F:\Git\Chat\Chat\Chat\bin\Debug\netcoreapp2.2\Chat.Views.pdb
+F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csprojAssemblyReference.cache
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csproj.CoreCompileInputs.cache
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.RazorAssemblyInfo.cache
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.RazorAssemblyInfo.cs
@@ -30,4 +31,3 @@ F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.Views.pdb
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.dll
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.pdb
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csproj.CopyComplete
-F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csprojAssemblyReference.cache

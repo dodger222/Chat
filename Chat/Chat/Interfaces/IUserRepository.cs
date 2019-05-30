@@ -9,6 +9,6 @@ namespace Chat.Interfaces
     public interface IUserRepository
     {
         string GetUserId(string userName);
-        DateTime GetUserRegistrationDate(string UserId);
+        DateTime GetUserRegistrationDate(string userId);
     }
 }
