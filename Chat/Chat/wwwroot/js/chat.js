@@ -15,9 +15,9 @@ hubConnection.on("Receive", function (message, userName) {
     elem.appendChild(userNameElem);
     elem.appendChild(document.createTextNode(message));
 
-    //var firstElem = document.getElementById("chatroom").firstChild;
-    //document.getElementById("chatroom").insertBefore(elem, firstElem);
     $("#chatroom").append(elem);
+    var scrollinDiv = document.getElementById("chatroom");
+    scrollinDiv.scrollTop = scrollinDiv.scrollHeight;
 });
 
 document.getElementById("sendBtn").addEventListener("click", function (e) {
@@ -26,12 +26,5 @@ document.getElementById("sendBtn").addEventListener("click", function (e) {
     document.getElementById("message").value = "";
     hubConnection.invoke("Send", message, userName);
 });
-
-window.onload = function () {
-    var scrollinDiv = document.getElementById('chatroom');
-    setInterval(function () {
-        scrollinDiv.scrollTop = 9999;
-    }, 100);
-}
 
 hubConnection.start();
