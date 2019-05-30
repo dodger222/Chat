@@ -29,8 +29,8 @@ namespace Chat.Controllers
 
             if (userId != null)
             {
-                DateTime userName = _db.Users.Where(u => u.Id == userId).FirstOrDefault().DateTimeRegistration;
-                IEnumerable<Message> messages = _db.Messages.Where(m => m.DateTimeOfSend.CompareTo(userName) > 0).Include(m => m.User).ToArray();
+                DateTime userRegistrationDateTime = _db.Users.Where(u => u.Id == userId).FirstOrDefault().DateTimeRegistration;
+                IEnumerable<Message> messages = _db.Messages.Where(m => m.DateTimeOfSend.CompareTo(userRegistrationDateTime) > 0).Include(m => m.User).ToArray();
                 var model = messages;
                 return View(model);
             }
