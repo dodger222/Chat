@@ -15,15 +15,15 @@ namespace Chat.Controllers
 {
     public class HomeController : Controller
     {
-        ChatContext _db;
         private readonly UserManager<User> _userManager;
         private readonly IUserRepository _userRepository;
+        private readonly IMessageRepository _messageRepository;
 
-        public HomeController(ChatContext db, UserManager<User> userManager, IUserRepository userRepository)
+        public HomeController(UserManager<User> userManager, IUserRepository userRepository, IMessageRepository messageRepository)
         {
-            _db = db;
             _userManager = userManager;
             _userRepository = userRepository;
+            _messageRepository = messageRepository;
         }
 
         public IActionResult Index()
@@ -33,7 +33,7 @@ namespace Chat.Controllers
             if (userId != null)
             {
                 DateTime userRegistrationDateTime = _userRepository.GetUserRegistrationDate(userId);
-                IEnumerable<Message> messages = _db.Messages.Where(m => m.DateTimeOfSend.CompareTo(userRegistrationDateTime) > 0).Include(m => m.User).ToArray();
+                IEnumerable<Message> messages = _messageRepository.GetMessages(userRegistrationDateTime);
                 var model = messages;
                 return View(model);
             }

@@ -1,4 +1,5 @@
-﻿using Chat.Models;
+﻿using Chat.Interfaces;
+using Chat.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System;
@@ -11,12 +12,14 @@ namespace Chat.Hubs
     [Authorize]
     public class ChatHub : Hub
     {
-        ChatContext _db;
+        private readonly IMessageRepository _messageRepository;
+        private readonly IUserRepository _userRepository;
 
-        public ChatHub(ChatContext db)
+        public ChatHub(IMessageRepository messageRepository, IUserRepository userRepository)
             :base()
         {
-            _db = db;
+            _messageRepository = messageRepository;
+            _userRepository = userRepository;
         }
 
         public async Task Send(string message, string userName)
@@ -24,14 +27,13 @@ namespace Chat.Hubs
             Message mes = new Message
             {
                 Text = message,
-                UserId = _db.Users.Where(u => u.UserName == userName).FirstOrDefault().Id,
+                UserId = _userRepository.GetUserId(userName),
                 DateTimeOfSend = DateTime.Now
             };
 
             if (mes != null && message.Length != 0)
             {
-                await _db.Messages.AddAsync(mes);
-                _db.SaveChanges();
+                await _messageRepository.AddAsync(mes);
                 await Clients.All.SendAsync("Receive", message, userName);
             }
         }

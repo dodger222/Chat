@@ -8,7 +8,7 @@ namespace Chat.Interfaces
 {
     public interface IMessageRepository
     {
-        void Add(Message message);
-        IEnumerable<Message> GetMessages();
+        Task AddAsync(Message message);
+        IEnumerable<Message> GetMessages(DateTime userRegistrationDateTime);
     }
 }
