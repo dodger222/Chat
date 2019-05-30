@@ -3,19 +3,19 @@
 var hubConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 let userName = "";
-// получение сообщения от сервера
+// receiving a message from the server
 hubConnection.on("Receive", function (message, userName) {
-
-    // создаем элемент <b> для имени пользователя
+    
     let userNameElem = document.createElement("b");
     userNameElem.appendChild(document.createTextNode(userName + ": "));
-
-    // создает элемент <p> для сообщения пользователя
+    
     let elem = document.createElement("li");
     elem.appendChild(userNameElem);
     elem.appendChild(document.createTextNode(message));
 
     $("#chatroom").append(elem);
+
+    // scrolling chat
     var scrollinDiv = document.getElementById("chatroom");
     scrollinDiv.scrollTop = scrollinDiv.scrollHeight;
 });

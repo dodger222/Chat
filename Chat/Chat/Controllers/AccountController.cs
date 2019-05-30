@@ -30,11 +30,11 @@ namespace Chat.Controllers
             if (ModelState.IsValid)
             {
                 User user = new User { Nickname = model.Nickname, UserName = model.Nickname , DateTimeRegistration = DateTime.Now};
-                // добавляем пользователя
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // установка куки
+                    // set cookie
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -65,7 +65,7 @@ namespace Chat.Controllers
                     await _signInManager.PasswordSignInAsync(model.Nickname, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    // проверяем, принадлежит ли URL приложению
+                    // check if the URL belongs to the application
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
@@ -87,7 +87,7 @@ namespace Chat.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOff()
         {
-            // удаляем аутентификационные куки
+            // delete authentication cookies
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
