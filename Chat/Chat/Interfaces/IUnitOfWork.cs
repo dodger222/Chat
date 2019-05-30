@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Chat.Interfaces
 {
-    public class IUnitOfWork
+    public interface IUnitOfWork
     {
         IUserRepository UserRepository { get; }
         IMessageRepository MessageRepository { get; }

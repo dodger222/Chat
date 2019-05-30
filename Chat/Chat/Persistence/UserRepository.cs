@@ -1,5 +1,5 @@
 ﻿using Chat.Interfaces;
-using Chat.Models;
+using Chat.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;

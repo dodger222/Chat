@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Chat.Hubs;
 using Chat.Interfaces;
 using Chat.Models;
+using Chat.Persistence;
 using Chat.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -53,6 +54,7 @@ namespace Chat
             services.AddSignalR();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

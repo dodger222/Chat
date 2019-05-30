@@ -1,5 +1,6 @@
 ﻿using Chat.Interfaces;
 using Chat.Models;
+using Chat.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

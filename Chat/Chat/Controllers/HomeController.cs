@@ -5,9 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Chat.Models;
-using Microsoft.AspNetCore.SignalR;
-using Chat.Hubs;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Chat.Interfaces;
 
@@ -16,14 +13,12 @@ namespace Chat.Controllers
     public class HomeController : Controller
     {
         private readonly UserManager<User> _userManager;
-        private readonly IUserRepository _userRepository;
-        private readonly IMessageRepository _messageRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(UserManager<User> userManager, IUserRepository userRepository, IMessageRepository messageRepository)
+        public HomeController(UserManager<User> userManager, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
-            _userRepository = userRepository;
-            _messageRepository = messageRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
@@ -32,8 +27,8 @@ namespace Chat.Controllers
 
             if (userId != null)
             {
-                DateTime userRegistrationDateTime = _userRepository.GetUserRegistrationDate(userId);
-                IEnumerable<Message> messages = _messageRepository.GetMessages(userRegistrationDateTime);
+                DateTime userRegistrationDateTime = _unitOfWork.UserRepository.GetUserRegistrationDate(userId);
+                IEnumerable<Message> messages = _unitOfWork.MessageRepository.GetMessages(userRegistrationDateTime);
                 var model = messages;
                 return View(model);
             }
