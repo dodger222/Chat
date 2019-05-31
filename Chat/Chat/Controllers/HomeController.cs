@@ -30,6 +30,7 @@ namespace Chat.Controllers
                 // show message after user’s registration date
 
                 IEnumerable<User> users = _unitOfWork.UserRepository.GetUsers();
+                users = users.Where(u => u.UserName != User.Identity.Name);
                 var model = users;
                 return View(model);
             }

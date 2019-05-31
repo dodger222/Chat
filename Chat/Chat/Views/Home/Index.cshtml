@@ -25,28 +25,15 @@
             </select>
         </div>
     </div>
-
-
-
-    @*<div id="header"></div><br />
-    <div id="chatroom" class="form-control">
-        <ul id="ul">
-            @foreach (var message in Model)
-            {
-                @if (message.User != null)
-                {
-                    <li><b>@message.User.UserName: </b>@message.Text</li>
-                }
-            }
-        </ul>
-    </div>*@
-    @*<br />
+    
+    <div id="privateChatroom" class="form-control"></div>
+    <br />
     <div id="inputForm" class="form-group row">
         <div class="col-md-10">
-            <input type="text" id="message" class="form-control" />
+            <input type="text" id="privateMessage" class="form-control" />
         </div>
         <input type="submit" id="sendBtn" value="Send" class="btn btn-radius btn-success" />
-    </div>*@
+    </div>
 }
 else
 {
