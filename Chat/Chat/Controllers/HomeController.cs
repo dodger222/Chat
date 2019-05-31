@@ -27,7 +27,7 @@ namespace Chat.Controllers
 
             if (userId != null)
             {
-                // show message after user’s registration date
+                // get list of users
 
                 IEnumerable<User> users = _unitOfWork.UserRepository.GetUsers();
                 users = users.Where(u => u.UserName != User.Identity.Name);
@@ -58,10 +58,14 @@ namespace Chat.Controllers
             {
                 string fromUserId = _unitOfWork.UserRepository.GetUserId(User.Identity.Name);
 
+                // get messages from both users
                 privateMessages = _unitOfWork.PrivateMessageRepository.GetPrivateMessages(fromUserId, toUserId);
                 privateMessagesTwo = _unitOfWork.PrivateMessageRepository.GetPrivateMessages(toUserId, fromUserId);
 
+                // merge messages into one list
                 privateMessages.AddRange(privateMessagesTwo);
+
+                //sort by DateTime of send
                 privateMessages = privateMessages.OrderBy(m => m.DateTimeOfSend).ToList();
             }
 
