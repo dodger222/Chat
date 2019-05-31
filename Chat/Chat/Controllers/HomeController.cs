@@ -29,9 +29,8 @@ namespace Chat.Controllers
             {
                 // show message after user’s registration date
 
-                DateTime userRegistrationDateTime = _unitOfWork.UserRepository.GetUserRegistrationDate(userId);
-                IEnumerable<Message> messages = _unitOfWork.MessageRepository.GetMessages(userRegistrationDateTime);
-                var model = messages;
+                IEnumerable<User> users = _unitOfWork.UserRepository.GetUsers();
+                var model = users;
                 return View(model);
             }
 
