@@ -8,6 +8,7 @@ namespace Chat.Interfaces
 {
     public interface IUserRepository
     {
+        List<User> GetUsers();
         string GetUserId(string userName);
         DateTime GetUserRegistrationDate(string userId);
     }
