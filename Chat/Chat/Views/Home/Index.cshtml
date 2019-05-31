@@ -50,14 +50,14 @@ else
 
 <script>
     $("#selectedUser").change(function () {
-        // получаем выбранный id
+        // get selected id
         var id = $(this).val();
         $.ajax({
             type: 'GET',
             url: "Home/GetMessages",
             data: { toUserId: id },
             success: function (data) {
-                // заменяем содержимое присланным частичным представлением
+                // replace the content with a partial view
                 $('#privateChatroom').replaceWith(data);
             }
         });

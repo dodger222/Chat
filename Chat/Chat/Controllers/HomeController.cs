@@ -62,9 +62,10 @@ namespace Chat.Controllers
                 privateMessagesTwo = _unitOfWork.PrivateMessageRepository.GetPrivateMessages(toUserId, fromUserId);
 
                 privateMessages.AddRange(privateMessagesTwo);
+                privateMessages = privateMessages.OrderBy(m => m.DateTimeOfSend).ToList();
             }
 
-            return PartialView(privateMessagesTwo);
+            return PartialView(privateMessages);
         }
     }
 }

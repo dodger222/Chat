@@ -45,6 +45,7 @@ namespace Chat.Hubs
             PrivateMessage mes = new PrivateMessage
             {
                 FromUserId = fromUserId,
+                FromUserName = fromUserName,
                 ToUserId = toUserId,
                 Text = message,
                 DateTimeOfSend = DateTime.Now
