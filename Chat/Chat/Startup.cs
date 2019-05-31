@@ -54,6 +54,7 @@ namespace Chat
             services.AddSignalR();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IPrivateMessageRepository, PrivateMessageRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
