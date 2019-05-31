@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chat.Interfaces
 {
-    public interface IPrivateMessage
+    public interface IPrivateMessageRepository
     {
         List<PrivateMessage> GetPrivateMessages(string FromUserId, string ToUserId);
     }
