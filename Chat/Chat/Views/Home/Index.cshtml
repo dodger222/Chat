@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Chat.Models.Message>
+﻿@model IEnumerable<Chat.Models.User>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,7 +10,25 @@
         <p id="userName">@User.Identity.Name</p>
     </div>
 
-    <div id="header"></div><br />
+
+    <div class="form-group row">
+        <div class="col-md-2">
+            <label>Select recipient: </label>
+        </div>
+        <div class="col-md-2">
+            <select id="selectedUser" class="form-control">
+                <option value=""></option>
+                @foreach (var user in Model)
+                {
+                    <option value="@user.Id">@user.UserName</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+
+    @*<div id="header"></div><br />
     <div id="chatroom" class="form-control">
         <ul id="ul">
             @foreach (var message in Model)
@@ -21,14 +39,14 @@
                 }
             }
         </ul>
-    </div>
-    <br />
+    </div>*@
+    @*<br />
     <div id="inputForm" class="form-group row">
         <div class="col-md-10">
             <input type="text" id="message" class="form-control" />
         </div>
         <input type="submit" id="sendBtn" value="Send" class="btn btn-radius btn-success" />
-    </div>
+    </div>*@
 }
 else
 {
