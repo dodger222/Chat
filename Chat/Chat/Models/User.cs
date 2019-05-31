@@ -12,5 +12,6 @@ namespace Chat.Models
         public DateTime DateTimeRegistration { get; set; }
 
         public ICollection<Message> Messages { get; set; }
+        //public ICollection<PrivateMessage> PrivateMessages { get; set; }
     }
 }

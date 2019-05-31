@@ -21,5 +21,6 @@ namespace Chat.Persistence
         }
 
         public DbSet<Message> Messages { get; set; }
+        public DbSet<PrivateMessage> PrivateMessages { get; set; }
     }
 }
