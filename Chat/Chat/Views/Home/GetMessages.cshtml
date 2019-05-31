@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Chat.Models.PrivateMessage>
+
+<div id="privateChatroom" class="form-control">
+    <ul>
+        @foreach(var mes in Model)
+        {
+            <li><b>@mes.FromUser.UserName: </b>@mes.Text</li>
+        }
+    </ul>
+</div>

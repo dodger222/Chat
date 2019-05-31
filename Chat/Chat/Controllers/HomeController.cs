@@ -48,19 +48,23 @@ namespace Chat.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        public ActionResult GetMessages(string toUserId)
+        
+        public IActionResult GetMessages(string toUserId)
         {
             List<PrivateMessage> privateMessages = new List<PrivateMessage>();
+            List<PrivateMessage> privateMessagesTwo = new List<PrivateMessage>();
 
-            if (toUserId.Length != 0)
+            if (toUserId != null)
             {
                 string fromUserId = _unitOfWork.UserRepository.GetUserId(User.Identity.Name);
 
                 privateMessages = _unitOfWork.PrivateMessageRepository.GetPrivateMessages(fromUserId, toUserId);
+                privateMessagesTwo = _unitOfWork.PrivateMessageRepository.GetPrivateMessages(toUserId, fromUserId);
+
+                privateMessages.AddRange(privateMessagesTwo);
             }
 
-            return PartialView(privateMessages);
+            return PartialView(privateMessagesTwo);
         }
     }
 }

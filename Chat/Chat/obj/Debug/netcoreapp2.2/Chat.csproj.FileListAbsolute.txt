@@ -31,3 +31,4 @@ F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.dll
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.pdb
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csproj.CopyComplete
 F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Chat.csprojAssemblyReference.cache
+F:\Git\Chat\Chat\Chat\obj\Debug\netcoreapp2.2\Razor\Views\Home\GetMessages.g.cshtml.cs
