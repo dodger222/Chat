@@ -48,5 +48,19 @@ namespace Chat.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public ActionResult GetMessages(string toUserId)
+        {
+            List<PrivateMessage> privateMessages = new List<PrivateMessage>();
+
+            if (toUserId.Length != 0)
+            {
+                string fromUserId = _unitOfWork.UserRepository.GetUserId(User.Identity.Name);
+
+                privateMessages = _unitOfWork.PrivateMessageRepository.GetPrivateMessages(fromUserId, toUserId);
+            }
+
+            return PartialView(privateMessages);
+        }
     }
 }

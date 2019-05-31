@@ -9,5 +9,7 @@ namespace Chat.Interfaces
     public interface IPrivateMessageRepository
     {
         List<PrivateMessage> GetPrivateMessages(string FromUserId, string ToUserId);
+
+        Task AddAsync(PrivateMessage mes);
     }
 }

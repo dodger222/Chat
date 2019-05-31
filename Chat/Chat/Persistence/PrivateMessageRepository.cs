@@ -20,5 +20,10 @@ namespace Chat.Persistence
         {
             return _db.PrivateMessages.Where(m => m.FromUserId == fromUserId && m.ToUserId == toUserId).ToList();
         }
+        public async Task AddAsync(PrivateMessage mes)
+        {
+            await _db.PrivateMessages.AddAsync(mes);
+            _db.SaveChanges();
+        }
     }
 }

@@ -35,5 +35,24 @@ namespace Chat.Hubs
                 await Clients.All.SendAsync("Receive", message, userName);
             }
         }
+
+        public async Task SendPrivateMessage(string toUserId, string message)
+        {
+            string fromUserName = Context.User.Identity.Name;
+
+            string fromUserId = _unitOfWork.UserRepository.GetUserId(fromUserName);
+
+            PrivateMessage mes = new PrivateMessage
+            {
+                FromUserId = fromUserId,
+                ToUserId = toUserId,
+                Text = message,
+                DateTimeOfSend = DateTime.Now
+            };
+
+            await _unitOfWork.PrivateMessageRepository.AddAsync(mes);
+
+            await Clients.Users(Context.UserIdentifier, toUserId).SendAsync("ReceivePrivateMessage", message, fromUserName);
+        }
     }
 }
