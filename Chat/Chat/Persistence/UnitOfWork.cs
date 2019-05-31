@@ -12,6 +12,7 @@ namespace Chat.Persistence
         private readonly ChatContext db;
         private UserRepository userRepository;
         private MessageRepository messageRepository;
+        private PrivateMessageRepository privateMessageRepository;
 
         public UnitOfWork(ChatContext context)
         {
@@ -20,5 +21,6 @@ namespace Chat.Persistence
 
         public IUserRepository UserRepository => userRepository ?? new UserRepository(db);
         public IMessageRepository MessageRepository => messageRepository ?? new MessageRepository(db);
+        public IPrivateMessageRepository PrivateMessageRepository => privateMessageRepository ?? new PrivateMessageRepository(db);
     }
 }

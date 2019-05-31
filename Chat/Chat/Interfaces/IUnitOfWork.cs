@@ -9,5 +9,6 @@ namespace Chat.Interfaces
     {
         IUserRepository UserRepository { get; }
         IMessageRepository MessageRepository { get; }
+        IPrivateMessageRepository PrivateMessageRepository { get; }
     }
 }
